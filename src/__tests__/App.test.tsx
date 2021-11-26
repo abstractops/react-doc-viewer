@@ -16,7 +16,7 @@ test("renders component with no file name", async () => {
   );
 
   act(async () => {
-    await comp?.findByTestId("file-name");
+    await comp?.findByTestId("doc-title");
   });
 
   expect(comp?.getByTestId("react-doc-viewer")).toMatchSnapshot();

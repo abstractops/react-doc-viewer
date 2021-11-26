@@ -1,6 +1,7 @@
 import React, { FC, useContext } from "react";
 import styled from "styled-components";
 import { Button, LinkButton } from "../../../components/common";
+import { FileName } from "../../../components/DocTitle";
 import { IStyledProps } from "../../../types";
 import { PDFContext } from "../state";
 import { setPDFPaginated, setZoomLevel } from "../state/actions";
@@ -30,7 +31,7 @@ const PDFControls: FC<{}> = () => {
         <DownloadButton
           id="pdf-download"
           href={currentDocument?.fileData as string}
-          download={currentDocument?.uri}
+          download={FileName()}
         >
           <DownloadPDFIcon color="#000" size="75%" />
         </DownloadButton>
