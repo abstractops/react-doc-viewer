@@ -6,6 +6,7 @@ import { useDocumentLoader } from "../utils/useDocumentLoader";
 import { useWindowSize } from "../utils/useWindowSize";
 import { LinkButton } from "./common";
 import { LoadingIcon } from "./icons";
+import { FileName } from "./DocTitle";
 
 export const ProxyRenderer: FC<{}> = () => {
   const { state, dispatch, CurrentRenderer } = useDocumentLoader();
@@ -44,7 +45,7 @@ export const ProxyRenderer: FC<{}> = () => {
             <DownloadButton
               id="no-renderer-download"
               href={currentDocument?.uri}
-              download={currentDocument?.uri}
+              download={FileName()}
             >
               Download File
             </DownloadButton>

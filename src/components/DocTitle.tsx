@@ -1,0 +1,46 @@
+import React, { FC, useContext } from "react";
+import styled from "styled-components";
+import { DocViewerContext } from "../state";
+import { IStyledProps } from "../types";
+
+export const FileName = ():string => {
+  const {
+    state: { config, currentDocument },
+  } = useContext(DocViewerContext);
+
+  if (!currentDocument || config?.header?.disableFileName) return "";
+
+  let fileName = currentDocument.fileName
+  if (!fileName) {
+    let fileName = currentDocument.uri || "";
+    fileName = decodeURI(fileName);
+
+    if (!config?.header?.retainURLParams) {
+      fileName = fileName.split("?")[0];
+    }
+
+    const splitURL = fileName.split("/");
+    if (splitURL.length) {
+      fileName = splitURL[splitURL.length - 1];
+    }
+  }
+
+  return fileName
+}
+
+export const DocTitle: FC<{}> = () => {
+  return (
+    <Container id="doc-title" data-testid="doc-title">
+      {FileName()}
+    </Container>
+  );
+};
+
+const Container = styled.div`
+  flex: 1;
+  text-align: left;
+  color: ${(props: IStyledProps) => props.theme.text_primary};
+  font-weight: bold;
+  margin: 0 10px;
+  overflow: hidden;
+`;

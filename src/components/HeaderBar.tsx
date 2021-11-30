@@ -4,7 +4,7 @@ import { DocViewerContext } from "../state";
 import { nextDocument, previousDocument } from "../state/actions";
 import { IStyledProps } from "../types";
 import { DocumentNav } from "./DocumentNav";
-import { FileName } from "./FileName";
+import { DocTitle } from "./DocTitle";
 
 export const HeaderBar: FC<{}> = () => {
   const { state, dispatch } = useContext(DocViewerContext);
@@ -23,7 +23,7 @@ export const HeaderBar: FC<{}> = () => {
   } else {
     return (
       <Container id="header-bar" data-testid="header-bar">
-        <FileName />
+        <DocTitle />
         <DocumentNav />
       </Container>
     );
